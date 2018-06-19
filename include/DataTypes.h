@@ -8,8 +8,9 @@
 #ifndef _DATA_TYPES_H
 #define _DATA_TYPES_H
 
-#if WIN32
-    #include "windows.h"
+#if _WIN32
+	/// sjn changed here. WARNING: THIS MAY BE A BAD CHANGE. There's something wrong with my Windows SDK, so I changed a little bit for compromise
+	#include "Windows.h"
 #else
     typedef signed char INT8;
     typedef unsigned char UINT8;
