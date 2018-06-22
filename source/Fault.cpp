@@ -3,7 +3,7 @@
 //
 #include "Fault.h"
 /// sjn changed here. Withoug <debugapi.h>, DebugBreak() cannot operate.
-#include <debugapi.h>
+//#include <debugapi.h>
 #include <cassert>
 namespace hython {
 

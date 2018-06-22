@@ -92,8 +92,8 @@ namespace hython {
 #ifdef _WIN32
 		success = InitializeCriticalSectionAndSpinCount(&_criticalSection, 0x00000400);
 #else
-		BOOL result1 = pthread_mutexattr_init(pthread_mutexattr_t *attr);
-		BOOL result2 = pthread_mutex_init(*mutex, *attr);
+		BOOL result1 = pthread_mutexattr_init(&attr);
+		BOOL result2 = pthread_mutex_init(&mutex, &attr);
 		success = (result1 == 0) && (result2 == 0);
 #endif
 		ASSERT_TRUE(success != 0);
@@ -107,7 +107,7 @@ namespace hython {
 #ifdef _WIN32
 		DeleteCriticalSection(&_criticalSection);
 #else
-		BOOL result = pthread_mutex_destroy(*mutex);
+		BOOL result = pthread_mutex_destroy(&mutex);
 		ASSERT_TRUE(result == 0);
 #endif
 		_xallocInitialized = FALSE;
@@ -125,8 +125,8 @@ namespace hython {
 		// note: there are 2 versions of lock in *nix. mutex_lock will wait for the lock,
 		// while mutex_trylock will throw return an error code.
 		// I think using mutex_lock is more appropriate.
-		BOOL result = pthread_mutex_lock(*mutex);
-		// BOOL result = pthread_mutex_trylock(*mutex);
+		BOOL result = pthread_mutex_lock(&mutex);
+		// BOOL result = pthread_mutex_trylock(&mutex);
 		ASSERT_TRUE(result == 0);
 #endif
 	}
@@ -140,7 +140,7 @@ namespace hython {
 #ifdef _WIN32
 		LeaveCriticalSection(&_criticalSection);
 #else
-		BOOL result = pthread_mutex_unlock(*mutex);
+		BOOL result = pthread_mutex_unlock(&mutex);
 		ASSERT_TRUE(result == 0);
 #endif
 	}

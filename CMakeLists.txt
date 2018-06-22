@@ -12,7 +12,7 @@ target_link_libraries(xallocator Allocator Fault)
 add_library(h_allocator source/h_allocator.cpp include/h_allocator.h)
 target_link_libraries(h_allocator xallocator)
 
-
+set (CMAKE_CXX_FLAGS " -pthread " )
 
 #add_library(hstring source/hstring.cpp include/hstring.h)
 add_library(hlist source/hlist.cpp include/hlist.h)
