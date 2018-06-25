@@ -7,10 +7,17 @@
 
 #include "h_allocator.h"
 #include <list>
+#include <vector>
+
 namespace hython {
     template<class _Ty, class _Ax =h_allocator<_Ty> >
     class hlist : public std::list<_Ty,_Ax>{
 
     };
+
+	template<class _Ty, class _Ax = h_allocator<_Ty> >
+	class hvector : public std::vector<_Ty, _Ax> {
+
+	};
 };
 #endif //OOP_ALLOCATOR_HLIST_H
