@@ -61,7 +61,7 @@ void generate_testfile(int vectorCount = 15000, int max_size = 200)
 	ofstream out_file("testcase.txt");
 	out_file << vectorCount << endl;
 
-	std::vector<hlist<int>> hlists(vectorCount);
+	std::vector<list<int, h_allocator<int>>> hlists(vectorCount);
 	for (int i = 0; i < vectorCount; i++)
 	{
 		hlists[i].resize(rand() % max_size + 1);
@@ -76,10 +76,10 @@ void Benchmark_standard(int vec_num = 15000, int list_num = 100, int max_size = 
 {
 	chrono::duration<double> time_duration;
 
-	vector<hvector<int>> hvectors(vec_num);
+	vector<vector<int, h_allocator<int>>> hvectors(vec_num);
 	vector<vector<int>> stdvectors(vec_num);
 
-	vector<hlist<int>> hlists(list_num);
+	vector<list<int, h_allocator<int>>> hlists(list_num);
 	vector<list<int>> stdlists(list_num);
 
 	auto start = chrono::high_resolution_clock::now();
@@ -99,7 +99,7 @@ void Benchmark_standard(int vec_num = 15000, int list_num = 100, int max_size = 
 	auto end = chrono::high_resolution_clock::now();
 
 	time_duration = end - start;
-	cout << "MyLists:  " << vec_num << " vectors, max size: " << max_size << ". Time: " << time_duration.count() << " seconds" << endl;
+	cout << "MyLists:  " << vec_num << " lists, max size: " << max_size << ". Time: " << time_duration.count() << " seconds" << endl;
 
 	start = chrono::high_resolution_clock::now();
 	for (int i = 0; i < vec_num; i++)
@@ -117,10 +117,10 @@ void Benchmark_standard(int vec_num = 15000, int list_num = 100, int max_size = 
 	}
 	end = chrono::high_resolution_clock::now();
 	time_duration = end - start;
-	cout << "stdLists: " << vec_num << " vectors, max size: " << max_size << ". Time: " << time_duration.count() << " seconds" << endl;
+	cout << "stdLists: " << vec_num << " lists, max size: " << max_size << ". Time: " << time_duration.count() << " seconds" << endl;
 }
 
-void Benchmark_iter(hlist<int> &myList, list<int> &stdList, int repeatTimes)
+void Benchmark_iter(list<int, h_allocator<int>> &myList, list<int> &stdList, int repeatTimes)
 {
 	chrono::duration<double> time_duration;
 
@@ -146,7 +146,7 @@ void Benchmark_iter(hlist<int> &myList, list<int> &stdList, int repeatTimes)
 	return;
 }
 
-void Benchmark_push(hlist<int> &myList, list<int> &stdList, int numsize)
+void Benchmark_push(list<int, h_allocator<int>> &myList, list<int> &stdList, int numsize)
 {
 	chrono::duration<double> time_duration;
 
@@ -190,7 +190,7 @@ void Benchmark_push(hlist<int> &myList, list<int> &stdList, int numsize)
 	return;
 }
 
-void Benchmark_pop(hlist<int> &myList, list<int> &stdList)
+void Benchmark_pop(list<int, h_allocator<int>> &myList, list<int> &stdList)
 {
 	chrono::duration<double> time_duration;
 	int myList_size = myList.size();
@@ -238,7 +238,7 @@ void Benchmark_pop(hlist<int> &myList, list<int> &stdList)
 
 int main() {
 	std::set_new_handler(out_of_memory);
-	hlist<int> myList;
+	list<int, h_allocator<int>> myList;
 	list<int> stdList;
 	const int N = 1000000;
 	for (int i = 1; i < 10; i++)
