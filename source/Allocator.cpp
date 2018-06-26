@@ -5,6 +5,8 @@
 #include "Allocator.h"
 #include <new>
 #include <cassert>
+#include <iostream>
+
 namespace hython{
     ///------------------------------------------------------------------------------
     // Constructor
@@ -29,11 +31,15 @@ namespace hython{
             {
                 m_pPool = memory;
                 m_allocatorMode = STATIC_POOL;
+#ifdef DEBUG
+                std::cout<<"This is now inside STATIC_POOL MODE "<<m_maxObjects<<std::endl;
+#endif
             }
             else
             {
                 m_pPool = (CHAR*)new CHAR[m_blockSize * m_maxObjects];
                 m_allocatorMode = HEAP_POOL;
+                //std::cout<<"It is HEAP_POOL"<<std::endl;
             }
         }
         else
@@ -74,6 +80,9 @@ namespace hython{
                 // If we have not exceeded the pool maximum
                 if(m_poolIndex < m_maxObjects)
                 {
+#ifdef DEBUG
+                    std::cout<<"Object Size:"<<m_objectSize<<"Inside Allocate: "<<m_poolIndex<<std::endl;
+#endif
                     pBlock = (void*)(m_pPool + (m_poolIndex++ * m_blockSize));
                 }
                 else
@@ -134,7 +143,9 @@ namespace hython{
             pBlock = m_pHead;
             m_pHead = m_pHead->pNext;
         }
-
+#ifdef DEBUG
+        std::cout<<"Inside Pop "<<(pBlock== nullptr)<<std::endl;
+#endif
         return (void*)pBlock;
     }
 

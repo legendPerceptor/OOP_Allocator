@@ -103,22 +103,6 @@ namespace hython{
     private:
         CHAR m_memory[sizeof(T) * Objects];
     };
-
-    // macro to provide header file interface
-    #define DECLARE_ALLOCATOR \
-        public: \
-            void* operator new(size_t size) { \
-                return _allocator.Allocate(size); \
-            } \
-            void operator delete(void* pObject) { \
-                _allocator.Deallocate(pObject); \
-            } \
-        private: \
-            static Allocator _allocator;
-
-    // macro to provide source file interface
-    #define IMPLEMENT_ALLOCATOR(class, objects, memory) \
-        Allocator class::_allocator(sizeof(class), objects, memory, #class);
 }
 
 #endif //OOP_ALLOCATOR_ALLOCATOR_H

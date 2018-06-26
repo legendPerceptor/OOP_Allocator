@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <cstddef>
 #include "xallocator.h"
+#include <iostream>
 
 
 namespace hython {
@@ -76,6 +77,7 @@ namespace hython {
         ///		using placement new.
         /// @param[in] val - instance of object to copy construct.
         void construct(pointer p, const T &val) {
+            //std::cout<<"CONSTRUCT:"<<val<<std::endl;
             new(static_cast<void *>(p)) T(val);
         }
 
