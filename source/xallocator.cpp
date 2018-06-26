@@ -10,7 +10,7 @@
 using std::cout;
 using std::endl;
 #define HEAP_POOL
-#define MAXOBJECTS 100000
+#define MAXOBJECTS 24990645
 namespace hython {
 
     // The default configuration is to use automatic init and destroy for convenience
