@@ -9,6 +9,8 @@
 #include <iostream>
 using std::cout;
 using std::endl;
+#define HEAP_POOL
+#define MAXOBJECTS 100000
 namespace hython {
 
     // The default configuration is to use automatic init and destroy for convenience
@@ -36,18 +38,19 @@ namespace hython {
     }
 
 #endif    // AUTOMATIC_XALLOCATOR_INIT_DESTROY
-
+//#define STATIC_POOLS
     // Default to enable STATIC_POOLS
 #ifdef STATIC_POOLS
     // Update this section as necessary if you want to use static memory pools.
     // See also xalloc_init() and xalloc_destroy() for additional updates required.
 #define MAX_ALLOCATORS    12
+#define MAX_BLOCKS_FREQUENT 24990645
 #define MAX_BLOCKS        32
 
     // Create static storage for each static allocator instance
     CHAR _allocator8[sizeof(AllocatorPool<CHAR[8], MAX_BLOCKS>)];
     CHAR _allocator16[sizeof(AllocatorPool<CHAR[16], MAX_BLOCKS>)];
-    CHAR _allocator32[sizeof(AllocatorPool<CHAR[32], MAX_BLOCKS>)];
+    CHAR _allocator32[sizeof(AllocatorPool<CHAR[32], MAX_BLOCKS_FREQUENT>)];
     CHAR _allocator64[sizeof(AllocatorPool<CHAR[64], MAX_BLOCKS>)];
     CHAR _allocator128[sizeof(AllocatorPool<CHAR[128], MAX_BLOCKS>)];
     CHAR _allocator256[sizeof(AllocatorPool<CHAR[256], MAX_BLOCKS>)];
@@ -162,7 +165,7 @@ namespace hython {
         // each allocator into the previously reserved static memory locations.
         new (&_allocator8) AllocatorPool<CHAR[8], MAX_BLOCKS>();
         new (&_allocator16) AllocatorPool<CHAR[16], MAX_BLOCKS>();
-        new (&_allocator32) AllocatorPool<CHAR[32], MAX_BLOCKS>();
+        new (&_allocator32) AllocatorPool<CHAR[32], MAX_BLOCKS_FREQUENT>();
         new (&_allocator64) AllocatorPool<CHAR[64], MAX_BLOCKS>();
         new (&_allocator128) AllocatorPool<CHAR[128], MAX_BLOCKS>();
         new (&_allocator256) AllocatorPool<CHAR[256], MAX_BLOCKS>();
@@ -280,14 +283,20 @@ namespace hython {
         // within the block memory region. Most blocks are powers of two,
         // however some common allocator block sizes can be explicitly defined
         // to minimize wasted storage. This offers application specific tuning.
+        //std::cout<<"Get Allocater: "<<size<<std::endl;
         size_t blockSize = size + sizeof(Allocator*);
+#ifdef DEBUG
+        std::cout<<"NowBLOCKSIZE:"<<blockSize<<std::endl;
+#endif
         if (blockSize > 256 && blockSize <= 396)
             blockSize = 396;
         else if (blockSize > 512 && blockSize <= 768)
             blockSize = 768;
         else
             blockSize = nexthigher<size_t>(blockSize);
-
+#ifdef DEBUG
+        std::cout<<"NowBLOCKSIZE:"<<blockSize<<std::endl;
+#endif
         Allocator* allocator = find_allocator(blockSize);
 
 #ifdef STATIC_POOLS
@@ -297,7 +306,11 @@ namespace hython {
 	if (allocator == NULL)
 	{
 		// Create a new allocator to handle blocks of the size required
-		allocator = new Allocator(blockSize, 0, 0, "xallocator");
+#ifdef HEAP_POOL
+        allocator = new Allocator(blockSize,MAXOBJECTS,0,"heap_pool");
+#else
+		allocator = new Allocator(blockSize, 0, 0, "heap_blocks");
+#endif
 
 		// Insert allocator into array
 		insert_allocator(allocator);
@@ -317,6 +330,9 @@ namespace hython {
 
         // Allocate a raw memory block
         Allocator* allocator = xallocator_get_allocator(size);
+#ifdef DEBUG
+        std::cout<<"Getting Allocator! "<<sizeof(Allocator*)<<"  "<< size<<std::endl;
+#endif
         void* blockMemoryPtr = allocator->Allocate(sizeof(Allocator*) + size);
 
         lock_release();

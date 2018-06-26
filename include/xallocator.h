@@ -37,8 +37,10 @@ namespace hython {
     /// @param[in] size - the size of the new block
     void *xrealloc(void*ptr, size_t size);
 
+    void xalloc_stats();
+
     #define AUTOMATIC_XALLOCATOR_INIT_DESTROY
-    #define STATIC_POOLS
+    //#define STATIC_POOLS
 
     // Macro to overload new/delete with xalloc/xfree
     #define XALLOCATOR \

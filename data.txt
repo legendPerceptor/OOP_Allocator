@@ -1,0 +1,141 @@
+MyLists:  10000 vectors, max size: 200. Time: 0.0374235 seconds
+stdLists: 10000 vectors, max size: 200. Time: 0.0247334 seconds
+MyLists:  20000 vectors, max size: 400. Time: 0.128873 seconds
+stdLists: 20000 vectors, max size: 400. Time: 0.0754938 seconds
+MyLists:  30000 vectors, max size: 600. Time: 0.227618 seconds
+stdLists: 30000 vectors, max size: 600. Time: 0.160015 seconds
+MyLists:  40000 vectors, max size: 800. Time: 0.393917 seconds
+stdLists: 40000 vectors, max size: 800. Time: 0.25225 seconds
+MyLists:  50000 vectors, max size: 1000. Time: 0.572314 seconds
+stdLists: 50000 vectors, max size: 1000. Time: 0.375533 seconds
+MyLists:  60000 vectors, max size: 1200. Time: 0.830318 seconds
+stdLists: 60000 vectors, max size: 1200. Time: 0.551452 seconds
+MyLists:  70000 vectors, max size: 1400. Time: 1.11323 seconds
+stdLists: 70000 vectors, max size: 1400. Time: 0.740362 seconds
+MyLists:  80000 vectors, max size: 1600. Time: 1.43246 seconds
+stdLists: 80000 vectors, max size: 1600. Time: 0.951879 seconds
+MyLists:  90000 vectors, max size: 1800. Time: 1.8367 seconds
+stdLists: 90000 vectors, max size: 1800. Time: 1.19401 seconds
+
+
+
+test heap block
+MyLists:	10000 lists, max size: 200. Time: 0.157489 seconds
+stdLists:	10000 lists, max size: 200. Time: 0.184422 seconds
+MyLists:	20000 lists, max size: 400. Time: 0.554217 seconds
+stdLists:	20000 lists, max size: 400. Time: 0.721611 seconds
+MyLists:	30000 lists, max size: 600. Time: 1.08107 seconds
+stdLists:	30000 lists, max size: 600. Time: 1.51965 seconds
+MyLists:	40000 lists, max size: 800. Time: 1.72833 seconds
+stdLists:	40000 lists, max size: 800. Time: 2.86341 seconds
+MyLists:	50000 lists, max size: 1000. Time: 2.62003 seconds
+stdLists:	50000 lists, max size: 1000. Time: 4.59876 seconds
+MyList :	inserted 10000000 elements in 1.23706 seconds
+stdlist:	inserted 10000000 elements in 1.21984 seconds
+MyList :	10000000 elements, repeated for 20 times in 2.33439 seconds
+stdlist:	10000000 elements, repeated for 20 times in 2.31666 seconds
+MyList :	popped 10000000 elements in 0.424412 seconds
+stdlist:	popped 10000000 elements in 0.869113 seconds
+
+test heap pool using heap block MaxObejcts 24990645
+MyLists:	10000 lists, max size: 200. Time: 0.0963415 seconds
+stdLists:	10000 lists, max size: 200. Time: 0.173016 seconds
+MyLists:	20000 lists, max size: 400. Time: 0.347973 seconds
+stdLists:	20000 lists, max size: 400. Time: 0.653691 seconds
+MyLists:	30000 lists, max size: 600. Time: 0.770367 seconds
+stdLists:	30000 lists, max size: 600. Time: 1.3966 seconds
+MyLists:	40000 lists, max size: 800. Time: 1.33861 seconds
+stdLists:	40000 lists, max size: 800. Time: 2.49002 seconds
+MyLists:	50000 lists, max size: 1000. Time: 2.03404 seconds
+stdLists:	50000 lists, max size: 1000. Time: 3.97125 seconds
+MyList :	inserted 10000000 elements in 1.00938 seconds
+stdlist:	inserted 10000000 elements in 1.21387 seconds
+MyList :	10000000 elements, repeated for 20 times in 2.32722 seconds
+stdlist:	10000000 elements, repeated for 20 times in 2.28537 seconds
+MyList :	popped 10000000 elements in 0.461892 seconds
+stdlist:	popped 10000000 elements in 1.02128 seconds
+
+test STATIC_POOL using block size 32 MaxObejcts 24990645
+MyLists:	10000 lists, max size: 200. Time: 0.115057 seconds
+stdLists:	10000 lists, max size: 200. Time: 0.174937 seconds
+MyLists:	20000 lists, max size: 400. Time: 0.370038 seconds
+stdLists:	20000 lists, max size: 400. Time: 0.655709 seconds
+MyLists:	30000 lists, max size: 600. Time: 0.807138 seconds
+stdLists:	30000 lists, max size: 600. Time: 1.41326 seconds
+MyLists:	40000 lists, max size: 800. Time: 1.39456 seconds
+stdLists:	40000 lists, max size: 800. Time: 2.5125 seconds
+MyLists:	50000 lists, max size: 1000. Time: 2.14549 seconds
+stdLists:	50000 lists, max size: 1000. Time: 4.05636 seconds
+MyList :	inserted 10000000 elements in 1.03894 seconds
+stdlist:	inserted 10000000 elements in 1.20232 seconds
+MyList :	10000000 elements, repeated for 20 times in 2.32282 seconds
+stdlist:	10000000 elements, repeated for 20 times in 2.29286 seconds
+MyList :	popped 10000000 elements in 0.422116 seconds
+stdlist:	popped 10000000 elements in 1.03497 seconds
+
+
+test HEAP_BLOCK for vectors
+MyLists:  10000 vectors, max size: 200. Time: 0.0325351 seconds
+stdLists: 10000 vectors, max size: 200. Time: 0.025917 seconds
+MyLists:  20000 vectors, max size: 400. Time: 0.123282 seconds
+stdLists: 20000 vectors, max size: 400. Time: 0.0899929 seconds
+MyLists:  30000 vectors, max size: 600. Time: 0.40641 seconds
+stdLists: 30000 vectors, max size: 600. Time: 0.396831 seconds
+MyLists:  40000 vectors, max size: 800. Time: 0.733137 seconds
+stdLists: 40000 vectors, max size: 800. Time: 0.51717 seconds
+MyLists:  50000 vectors, max size: 1000. Time: 1.01127 seconds
+stdLists: 50000 vectors, max size: 1000. Time: 0.624931 seconds
+MyLists:  60000 vectors, max size: 1200. Time: 1.16452 seconds
+stdLists: 60000 vectors, max size: 1200. Time: 0.812275 seconds
+MyLists:  70000 vectors, max size: 1400. Time: 1.40726 seconds
+stdLists: 70000 vectors, max size: 1400. Time: 1.02573 seconds
+MyLists:  80000 vectors, max size: 1600. Time: 1.834 seconds
+stdLists: 80000 vectors, max size: 1600. Time: 1.31284 seconds
+MyLists:  90000 vectors, max size: 1800. Time: 2.29707 seconds
+stdLists: 90000 vectors, max size: 1800. Time: 1.66869 seconds
+MyList:  inserted 100000 elements in 0.026706 seconds
+stdList: inserted 100000 elements in 0.0148793 seconds
+MyList:  100000 elements, repeated for 100 times in 0.143125 seconds
+stdlist: 100000 elements, repeated for 100 times in 0.147597 seconds
+MyList:  popped 100000 elements in 0.0060253 seconds
+stdList: popped 100000 elements in 0.016058 seconds
+heap_blocks Block Size: 32 Block Count: 100000 Blocks In Use: 0
+heap_blocks Block Size: 64 Block Count: 31 Blocks In Use: 0
+heap_blocks Block Size: 256 Block Count: 664 Blocks In Use: 0
+heap_blocks Block Size: 396 Block Count: 1284 Blocks In Use: 0
+heap_blocks Block Size: 768 Block Count: 4363 Blocks In Use: 0
+heap_blocks Block Size: 512 Block Count: 1490 Blocks In Use: 0
+heap_blocks Block Size: 2048 Block Count: 14424 Blocks In Use: 0
+heap_blocks Block Size: 1024 Block Count: 3111 Blocks In Use: 0
+heap_blocks Block Size: 128 Block Count: 156 Blocks In Use: 0
+heap_blocks Block Size: 16 Block Count: 4 Blocks In Use: 0
+heap_blocks Block Size: 4096 Block Count: 32715 Blocks In Use: 0
+heap_blocks Block Size: 8192 Block Count: 56720 Blocks In Use: 0
+heap_blocks Block Size: 16384 Block Count: 8239 Blocks In Use: 0
+
+
+test HEAP_POOL for vectors with fixed size of 100000
+MyLists:  10000 vectors, max size: 200. Time: 0.0342274 seconds
+stdLists: 10000 vectors, max size: 200. Time: 0.0234026 seconds
+MyLists:  20000 vectors, max size: 400. Time: 0.116362 seconds
+stdLists: 20000 vectors, max size: 400. Time: 0.0681149 seconds
+MyLists:  30000 vectors, max size: 600. Time: 0.236315 seconds
+stdLists: 30000 vectors, max size: 600. Time: 0.135319 seconds
+MyLists:  40000 vectors, max size: 800. Time: 0.404979 seconds
+stdLists: 40000 vectors, max size: 800. Time: 0.232742 seconds
+MyLists:  50000 vectors, max size: 1000. Time: 0.590599 seconds
+stdLists: 50000 vectors, max size: 1000. Time: 0.353091 seconds
+MyLists:  60000 vectors, max size: 1200. Time: 0.87338 seconds
+stdLists: 60000 vectors, max size: 1200. Time: 0.522265 seconds
+MyLists:  70000 vectors, max size: 1400. Time: 1.16324 seconds
+stdLists: 70000 vectors, max size: 1400. Time: 0.71019 seconds
+MyLists:  80000 vectors, max size: 1600. Time: 1.4923 seconds
+stdLists: 80000 vectors, max size: 1600. Time: 0.941115 seconds
+MyLists:  90000 vectors, max size: 1800. Time: 1.86213 seconds
+stdLists: 90000 vectors, max size: 1800. Time: 1.18413 seconds
+MyList:  inserted 100000 elements in 0.0114865 seconds
+stdList: inserted 100000 elements in 0.0134195 seconds
+MyList:  100000 elements, repeated for 100 times in 0.101021 seconds
+stdlist: 100000 elements, repeated for 100 times in 0.102283 seconds
+MyList:  popped 100000 elements in 0.00457195 seconds
+stdList: popped 100000 elements in 0.00916924 seconds
